@@ -1,13 +1,14 @@
 'use strict';
 
-const employeesdata = require('../models/fakerData/fakerEmployees')
+const fakerEmployees = require('../models/fakerData/fakerEmployees'),
+  config = require('../config/config').development
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Employees', employeesdata, {});
+    return queryInterface.bulkInsert(config.collection, fakerEmployees, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Employees', null, {});
+    return queryInterface.bulkDelete(config.collection, null, {});
   }
 };

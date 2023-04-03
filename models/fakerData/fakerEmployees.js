@@ -1,14 +1,14 @@
 'use strict'
 
+require('dotenv').config()
 const { faker } = require('@faker-js/faker'),
-    queantityEmployees = 50,
     employees = [];
 
-for (let i = 0; i < queantityEmployees; i++) {
+for (let i = 0; i < process.env.CANT_EMPLOYEES; i++) {
     let name = faker.name.firstName(),
         lastname = faker.name.lastName()
     
-        const employee = {
+    const employee = {
         name,
         lastname,
         age: faker.mersenne.rand(18, 60) ,
