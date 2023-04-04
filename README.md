@@ -29,11 +29,15 @@ La idea de es algo asi
 ### Migraciones 
 En este proyecto tambien se practicara Migraciones tanto para MySQL como para MongooDB con datos creados con aletoriamente con fakerjs
 Para crear migraciones de bases de datos MySQL podemos utilizar [sequelize](https://sequelize.org/) que es una de las herramientas más populares.
-Para crear migraciones para mongoDB podemos utilizar mongoose.
-
-[Migraciones en sequalize](https://github.com/japsolo/curso-sequelize-migrations-seeders)
-
-[Diseño de APIs: Entendiendo Sequelize (CLI + Migrations)](https://www.youtube.com/watch?v=6qDPwsXCc2E&ab_channel=MarluanEspiritusanto)
+[Curso sequelize migrations seeders](https://github.com/japsolo/curso-sequelize-migrations-seeders)
+Para crear migraciones para mongoDB podemos utilizar mongoose o [migrate-mongoose](https://www.npmjs.com/package/migrate-mongoose).   
 
 [Crear Seeders Mongo DB](https://ronaldl337.wordpress.com/2020/06/20/crear-seeders-en-node-js-y-mongo-db/)
-[migrate-mongoose](https://www.npmjs.com/package/migrate-mongoose)
+### Correr migraciones 
+
+-  `npm run mongo-migrate`: Corre las migraciones de mongo 
+-  `npm run msql-migrate`: Corre las migraciones de mysql
+-  `sequelize db:migrate:undo:all`: Revertirá todas las migraciones de mysql ejecutadas 
+-  `sequelize db:migrate`: Corre las migraciones de mysql pendientes 
+
+> Para mas comandos de sequelize revisar la documentacion [Curso sequelize migrations seeders](https://github.com/japsolo/curso-sequelize-migrations-seeders)
