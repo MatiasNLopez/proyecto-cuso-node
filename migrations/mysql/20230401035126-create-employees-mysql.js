@@ -1,5 +1,5 @@
 'use strict';
-const config = require('../config/config').development
+const config = require('../../config/config').development
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable(config.collection, {
