@@ -71,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
     allowNull: false
   },
   decription:{
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false
   },
   avatar:{

@@ -1,5 +1,5 @@
 'use strict';
-const config = require('../../config/config').development
+const config = require('../config/config').development
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable(config.collection, {
@@ -66,7 +66,7 @@ module.exports = {
         allowNull: false
       },
       decription:{
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false
       },
       avatar:{
