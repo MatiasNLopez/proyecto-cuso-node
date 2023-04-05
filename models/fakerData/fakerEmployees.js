@@ -13,7 +13,7 @@ for (let i = 0; i < process.env.CANT_EMPLOYEES; i++) {
         lastname,
         age: faker.mersenne.rand(18, 60) ,
         birthday: faker.date.birthdate({ min: 1900, max: 2000, mode: 'year' }), // 1940-08-20T08:53:07.538Z
-        phoneNumber:Number.toString(faker.phone.number('+48 91 ### ## ##')),
+        phoneNumber:faker.phone.number('+48 91 ### ## ##'),
         email:faker.internet.email(name, lastname, 'gmail.com'),
         city:faker.address.cityName(),
         state:faker.address.state(),
@@ -28,8 +28,7 @@ for (let i = 0; i < process.env.CANT_EMPLOYEES; i++) {
         createdAt: new Date(),
         updatedAt: new Date()
     }
-    employees.push(employee)
 }
-
+console.log(employees);
 module.exports = employees
 
