@@ -1,0 +1,47 @@
+section.cardEmployee 
+    //boton eliminar
+    article.cardInfoTop
+        form.form-delete(action=`/delete/${employee._id}`, method="post") 
+            input.button.detele(type="button", value="", onclick="delete(this)")
+            input(type="hidden", name="_method", value="DELETE")
+        aside.avatar 
+            img(src=`${employee.avatar}`, alt="Imagen de perfil")
+        // boton editar
+        p#employeeName= `${employee.name} ${employee.lastname}`
+        p#employeeJobType= `${employee.jobType}` 
+    section.cardDescription
+        article.cardAgeInfo
+            form.form-update(action=`/update/${employee.id}`, method="post") 
+                input.button.update(type="button", value="")
+            p.itemInfoTitle Age
+            p.itemInfo= `${employee.age} years`
+            p.itemInfoTitle Birthday
+            p.itemInfo= `${employee.birthday.toLocaleDateString()}`
+        hr.line
+        article.cardJobInfo
+            p.itemInfoTitle JobArea
+            p.itemInfo= `${employee.jobArea}`
+            p.itemInfoTitle JobDescriptor
+            p.itemInfo= `${employee.jobDescriptor}`
+            p.itemInfoTitle Experience
+            p.itemInfo= `${employee.experience} years`
+        hr.line
+        article.cardAddressInfo
+            p.itemInfoTitle City
+            p.itemInfo= `${employee.city}`
+            p.itemInfoTitle State
+            p.itemInfo= `${employee.state}`
+            p.itemInfoTitle StreetAddress
+            p.itemInfo= `${employee.streetAddress}`
+        hr.line
+        article.cardContactInfo
+            p.itemInfoTitle PhoneNumber
+            p.itemInfo= `${employee.phoneNumber}`
+            p.itemInfoTitle Email
+            p.itemInfo= `${employee.email}`
+
+        script.
+            function delete(input){
+                let deleteOk = confirm("¿Estas seguro que quiere eliminar la pelicula?")
+                return deleteOk? input.parentNode.submit() : false
+            }

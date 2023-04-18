@@ -1,11 +1,15 @@
 # proyecto-cuso-node
 
-El proyecto sera una API Rest de una lista de contactos o empleados de una empresa que mostrara una carta con sus datos.
-En el header tendra el nombre de la empresa y el nombre del aministrador. 
+El proyecto sera una API Rest de una lista de contactos o empleados de una empresa que mostrara una carta con sus datos. 
+En este proyecto se hara uso de los conocimientos del curso de Nodejs, de flexbox y CSS Grid.
+Ademas se intoducira migraciones que estan fuera del alcanse del curso de Nodejs
+
+La idea es la siguiente:
+Tendra un header con el nombre de la empresa, el avatar del aministrador y un icono de notificaciones (su no son necesarias).
+En el inicio tendra un boton de agrega, la cantidad de empleados que tiene la empresa y se listaran los empleados, que se mostraran en forma de carta con su informacion (No es necesario mostrar toda la info) y cada uno tendra un boton de eliminar y uno editar. 
 
 Podemos utiliza [fakerjs](https://fakerjs.dev/api/) para generar los datos aletorios de nuestra base de datos.
 Los datos que contendra seran:
-* Imagen de Portada por defecto color ?
 * Avatar
 * Nombre
 * Apellido  
@@ -41,3 +45,10 @@ Para crear migraciones para mongoDB podemos utilizar mongoose o [migrate-mongoos
 -  `sequelize db:migrate`: Corre las migraciones de mysql pendientes 
 
 > Para mas comandos de sequelize revisar la documentacion [Curso sequelize migrations seeders](https://github.com/japsolo/curso-sequelize-migrations-seeders)
+
+### Despliegue en produccion 
+Para desplegar la app vamos a usar [railway](https://railway.app/)
+[Documenteacion de railway](https://docs.railway.app/)
+
+Tambien podemos usar [fly.io](https://fly.io/) 
+Investigar bien este servicio [documentacion de fly.io](https://fly.io/docs/)

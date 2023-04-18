@@ -1,7 +1,9 @@
 'use strict';
 
+
 const mongoose = require('mongoose'),
-    conf = require('../config/config').development,
+    config = require('../config/config').development,
+    DB_URL = `mongodb://${config.host}/${config.database}`,
     Schema = mongoose.Schema,
     EmployeesSchemaa = new Schema({
         name: {
@@ -80,7 +82,15 @@ const mongoose = require('mongoose'),
         },
         {
             collection: "employees"
-        }),
+        }
+        ),
     EmployeesModel = mongoose.model('employees',EmployeesSchemaa)
+    mongoose.connect(DB_URL, {useNewUrlParser: true});
+    mongoose.set('toJSON', {
+      virtuals: true,
+      transform: (doc, converted) => {
+        delete converted._id;
+      }
+    });
     
 module.exports = EmployeesModel

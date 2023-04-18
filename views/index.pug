@@ -1,0 +1,11 @@
+extends layout.pug
+block content 
+    section.panelTop 
+        p Empleados #{data.length} 
+        button.addEmployee + Agregar empleado
+    section.listEmployee
+        if data.length > 0
+            each employee in data
+                include employee-card.pug
+        else
+            p No Existen empleado    

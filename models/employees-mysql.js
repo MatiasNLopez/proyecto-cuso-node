@@ -1,22 +1,19 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class EmployeesMysql extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  User.init({
-    name: {
-    type: DataTypes.STRING,
-    allowNull: false
+
+
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:');
+const db = require('./index')
+
+const EmployeesMysql = db.sequelize.define('employees',{
+  _id: {
+    type: DataTypes.INTEGER,
+    primaryKEy: true,
+    autoIncrement: true
+  },
+  name: {
+  type: DataTypes.STRING,
+  allowNull: false
   },
   lastname: {
     type: DataTypes.STRING,
@@ -78,9 +75,6 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     allowNull: false
   }
-  }, {
-    sequelize,
-    modelName: 'Employees',
-  });
-  return EmployeesMysql;
-};
+})
+
+  module.exports = EmployeesMysql;

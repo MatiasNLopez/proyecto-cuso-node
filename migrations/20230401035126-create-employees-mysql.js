@@ -3,7 +3,7 @@ const config = require('../config/config').development
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable(config.collection, {
-      id: {
+      _id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

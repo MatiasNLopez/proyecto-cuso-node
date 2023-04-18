@@ -28,7 +28,7 @@ for (let i = 0; i < process.env.CANT_EMPLOYEES; i++) {
         createdAt: new Date(),
         updatedAt: new Date()
     }
+    employees.push(employee)
 }
-console.log(employees);
 module.exports = employees
 
