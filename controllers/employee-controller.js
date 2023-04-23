@@ -37,9 +37,11 @@ EmployeeController.getOne = (req, res, next) =>{
     let employeeId =req.params.id
     EmployeeModel.getOne(engineDB,employeeId, (err, data)=>{
         if(err) error(res,`Error al obtener el empleado`,`Error al obtener el empleado con id ${employeeId}`,err)
-        let employee = {'employee':data.dataValues}
-        console.log(employee);
-        res.render('edit_employee',employee)
+        let json = {'employee':data.dataValues}
+        
+        json.employee.phoneNumber = json.employee.phoneNumber.replace(/\s/g, "")
+        json.employee.birthday = json.employee.birthday.toISOString()
+        res.render('edit_employee',json)
     })
 
 }
@@ -51,6 +53,7 @@ EmployeeController.getOne = (req, res, next) =>{
 */
 
 EmployeeController.save = async (req, res, next) =>{
+    console.log("ava");
     const form = new formidable.IncomingForm();
     form
     .parse(req, (err, fields, file) => {

@@ -6,12 +6,15 @@ const express = require('express'),
 
 router
 .get('/', employeeController.getAll)
+.post('/', employeeController.save)
+
 .get('/add/employee', employeeController.addForm)
 
-.get('/update/:id', employeeController.getOne)
+.get('/update/employee/:id', employeeController.getOne)
+.put('/update/employee/:id', employeeController.save)
 
-.post('/', employeeController.save)
-.put('/edit/employee/:id', employeeController.save)
-.delete('/delete/:id', employeeController.delete)
+.delete('/delete/employee/:id', employeeController.delete)
+
 .use(employeeController.error404)
+
 module.exports = router

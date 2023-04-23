@@ -25,12 +25,13 @@ Employee.getAll = async (dialect, cb) =>{
     }
 
 }
-Employee.getOne = async (dialect, id,cb) =>{
-    let data = {}; 
+Employee.getOne = async (dialect, employeeId,cb) =>{
+    let data = {}
     try{
         data =  dialect === 'mysql' 
-        ? await connMysql.findOne({_id: id})
-        : await connMongo.findOne({_id: id});
+        ? await connMysql.findOne({ where: { _id: employeeId }})
+        : await connMongo.findOne({ where: { _id: employeeId }});
+        console.log(data);
         cb(false,data)
         
     }

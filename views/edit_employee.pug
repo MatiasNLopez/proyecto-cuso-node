@@ -3,33 +3,35 @@ block content
     article.containerAddEmployee
         h1 Editar Empleado
         section.sectionForm
-            form.formAddEmployee(action=`/edit/employee/${employee._id}`, enctype="multipart/form-data", method="post") 
-                label.itemLabel Name 
-                input.intemInput(type="text" name="name" value=`${employee.name}` required)
-                label.itemLabel Lastname
-                input.intemInput(type="text" name="lastname" value=`${employee.lastname}` required)
-                label.itemLabel Age
-                input.itemInput(type="number", name="age" value=`${employee.age}` required)
-                label.itemLabel Birthday
-                input.intemInput(type="date" name="birthday" value=`${new Date(employee.birthday)}` required)
-                label.intemLabel Phone Number
-                input.intemInput(type="Number",name="phoneNumber" value=`${employee.phoneNumber}` required)
-                label.intemLabel Email
-                input.intemInput(type="email",name="email" value=`${employee.email}` required)
-                label.intemLabel City
-                input.intemInput(type="text",name="city" value=`${employee.city}` required)
-                label.intemLabel State
-                input.intemInput(type="text",name="state" value=`${employee.state}` required)
-                label.intemLabel Street Address
-                input.intemInput(type="text",name="streetAddress" value=`${employee.streetAddress}` required)
-                label.intemLabel Job Area
-                input.intemInput(type="text",name="jobArea" value=`${employee.jobArea}` required)
-                label.intemLabel Job Descriptor
-                input.intemInput(type="text",name="jobDescriptor" value=`${employee.jobDescriptor}` required)
-                label.intemLabel Job Type
-                input.intemInput(type="text",name="jobType" value=`${employee.jobType}` required)
-                label.intemLabel Experience
-                input.intemInput(type="Number",name="experience" value=`${employee.experience}` required)
-                label.intemLabel Avatar
-                input.itemImputFile(type="file", name="avatar" value=`${employee.avatar}` required)
-                input.inputSubmit(type="submit", value="Enviar")
+            form(action=`/update/employee/${employee._id}?_method=PUT`, enctype="multipart/form-data", method="post") 
+                fieldset.formAddEmployee
+                    input.intemInput(type="text", name="_id", value=employee._id, required, hidden)
+                    label.itemLabel Name 
+                    input.intemInput(type="text" name="name" value=`${employee.name}` required)
+                    label.itemLabel Lastname
+                    input.intemInput(type="text" name="lastname" value=`${employee.lastname}` required)
+                    label.itemLabel Age
+                    input.itemInput(type="number", name="age" value=`${employee.age}` required)
+                    label.itemLabel Birthday
+                    input.intemInput(type="date" name="birthday" value=`${new Date(employee.birthday)}` required)
+                    label.intemLabel Phone Number
+                    input.intemInput(type="Number",name="phoneNumber" value=`${employee.phoneNumber}` required)
+                    label.intemLabel Email
+                    input.intemInput(type="email",name="email" value=`${employee.email}` required)
+                    label.intemLabel City
+                    input.intemInput(type="text",name="city" value=`${employee.city}` required)
+                    label.intemLabel State
+                    input.intemInput(type="text",name="state" value=`${employee.state}` required)
+                    label.intemLabel Street Address
+                    input.intemInput(type="text",name="streetAddress" value=`${employee.streetAddress}` required)
+                    label.intemLabel Job Area
+                    input.intemInput(type="text",name="jobArea" value=`${employee.jobArea}` required)
+                    label.intemLabel Job Descriptor
+                    input.intemInput(type="text",name="jobDescriptor" value=`${employee.jobDescriptor}` required)
+                    label.intemLabel Job Type
+                    input.intemInput(type="text",name="jobType" value=`${employee.jobType}` required)
+                    label.intemLabel Experience
+                    input.intemInput(type="Number",name="experience" value=`${employee.experience}` required)
+                    label.intemLabel Avatar
+                    input.itemImputFile(type="file", name="avatar" value=`${employee.avatar}` required)
+                    input.button.edit(type="submit", name="Editar")

@@ -1,9 +1,8 @@
 section.cardEmployee 
     //boton eliminar
     article.cardInfoTop
-        form.form-delete(action=`/delete/${employee._id}`, method="POST") 
+        form.form-delete(action=`/delete/employee/${employee._id}?_method=DELETE`, method="POST") 
             input.button.detele(type="button", value="", onclick="eliminar(this)")
-            input(type="hidden", name="_method", value="DELETE")
         aside.avatar 
             img(src=`${employee.avatar}`, alt="Imagen de perfil")
         // boton editar
@@ -11,7 +10,7 @@ section.cardEmployee
         p#employeeJobType= `${employee.jobType}` 
     section.cardDescription
         article.cardAgeInfo
-            form.form-update(action=`/update/${employee._id}`, method="get") 
+            form.form-update(action=`/update/employee/${employee._id}`, method="get") 
                 input.button.update(type="submit", value="")
             p.itemInfoTitle Age
             p.itemInfo= `${employee.age} years`
