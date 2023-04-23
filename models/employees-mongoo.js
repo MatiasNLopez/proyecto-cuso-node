@@ -71,14 +71,17 @@ const mongoose = require('mongoose'),
             type: String,
             required: true
           },
-          createdAt:{ 
+         /*  createdAt:{ 
             type: Date,
             required: true
           },
           updatedAt:{ 
             type: Date,
             required: true
-          }
+          } */
+        },
+        {
+          timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }
         },
         {
             collection: "employees"

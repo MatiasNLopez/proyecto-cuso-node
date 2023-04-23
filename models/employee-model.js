@@ -11,10 +11,10 @@ Employee = () => {}
 
 /* Mysql or mongo */
 
-Employee.getAll = async (dialect, cb) =>{
+Employee.getAll = async (engineDB, cb) =>{
     
     try{
-        const data =  dialect === 'mysql' 
+        const data =  engineDB === 'mysql' 
         ? await connMysql.findAll()
         : await connMongo.find();
         /* console.log(data); */
@@ -23,14 +23,16 @@ Employee.getAll = async (dialect, cb) =>{
     catch(err){
         cb(err,{})
     }
-
+    
 }
-Employee.getOne = async (dialect, employeeId,cb) =>{
+Employee.getOne = async (engineDB, employeeId,cb) =>{
     let data = {}
     try{
-        data =  dialect === 'mysql' 
+        data =  engineDB === 'mysql' 
         ? await connMysql.findOne({ where: { _id: employeeId }})
-        : await connMongo.findOne({ where: { _id: employeeId }});
+        : await connMongo.findOne({_id: employeeId} );
+        if(data.dataValues) data = data.dataValues
+        
         cb(false,data)
         
     }
@@ -40,21 +42,21 @@ Employee.getOne = async (dialect, employeeId,cb) =>{
     }
 }
 
-Employee.save = async (dialect, data, cb) =>{
+Employee.save = async (engineDB, data, cb) =>{
     try {
         if(data._id){
             let _id = data._id
             delete data._id
-            let dataUpdate = dialect === 'mysql'
-                ? await connMysql.update(data, {where:{ _id}})
-                : await connMongo.findOneAndUpdate(
-                    {_id},
-                    {data}
-                )
+            
+            let dataUpdate = engineDB === 'mysql'
+                ? await connMysql.update    (data, {where:{ _id}})
+                : await connMongo.findOneAndUpdate({_id},data)
+            
+            /* console.log(`dataUpdate: ${dataUpdate}`); */
             cb(false, dataUpdate)
         } 
         else{
-            dialect === 'mysql'
+            engineDB === 'mysql'
             ? await connMysql.create(data)
             : await connMongo.create(data)
             cb(false, data)
@@ -65,9 +67,10 @@ Employee.save = async (dialect, data, cb) =>{
     }
 }
 
-Employee.delete = async (dialect, id,cb) =>{
+Employee.delete = async (engineDB, id,cb) =>{
+    console.log(engineDB);
     try{
-        const data =  dialect === 'mysql' 
+        const data =  engineDB === 'mysql' 
         ? await connMysql.destroy({where: {_id: id}, individualHooks: true})
         : await connMongo.deleteOne({_id:id})
         

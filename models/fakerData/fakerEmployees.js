@@ -12,8 +12,8 @@ for (let i = 0; i < process.env.CANT_EMPLOYEES; i++) {
         name,
         lastname,
         age: faker.mersenne.rand(18, 60) ,
-        birthday: faker.date.birthdate({ min: 1900, max: 2000, mode: 'year' }), // 1940-08-20T08:53:07.538Z
-        phoneNumber:faker.phone.number('48 91 ### ## ##'),
+        birthday: faker.date.birthdate({ min: 1960, max: 2000, mode: 'year' }), // 1940-08-20T08:53:07.538Z
+        phoneNumber:faker.phone.number('4891#######'),
         email:faker.internet.email(name, lastname, 'gmail.com'),
         city:faker.address.cityName(),
         state:faker.address.state(),

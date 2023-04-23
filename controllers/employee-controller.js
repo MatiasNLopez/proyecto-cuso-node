@@ -6,7 +6,7 @@ const employees = require('../models/fakerData/fakerEmployees');
 const EmployeeModel = require('../models/employee-model'),
     config = require('../config/config'),
     formidable = require('formidable'), /* Permite parsear los datos de un formulario */
-    engineDB = config.development.dialect,
+    engineDB = config.development.dbEngine,
     fse = require('fs-extra'),
     uploadPath =  `${__dirname}/../public/uploads`;
 
@@ -37,17 +37,8 @@ EmployeeController.getOne = (req, res, next) =>{
     let employeeId =req.params.id
     EmployeeModel.getOne(engineDB,employeeId, (err, data)=>{
         if(err) error(res,`Error al obtener el empleado`,`Error al obtener el empleado con id ${employeeId}`,err)
-        let json = {'employee':data.dataValues},
-            date = new Date(json.employee.birthday),
-            year = date.getFullYear(),
-            month = ('0' + date.getMonth()+1).slice(-2),
-            day = ('0' + date.getDay()).slice(-2)
-            
-        /* Formateo de datos  */
-        json.employee.phoneNumber = json.employee.phoneNumber.replace(/\s/g, "")
-        json.employee.birthday = `${year}-${month}-${day}`
-        console.log(json);
-        res.render('edit_employee',json)
+        
+        res.render('edit_employee',{'employee':data})
     })
 
 }
@@ -64,6 +55,7 @@ EmployeeController.save = async (req, res, next) =>{
     .parse(req, (err, fields, file) => {
         let avatarFile = JSON.parse(JSON.stringify(file.avatar)),
             employee = fields;
+            
         if(avatarFile.size > 0){
             if(err) error(res,'Error', 'Error al guardar empleado',err)
             let cpPath = `${uploadPath}/${avatarFile.originalFilename}`,
