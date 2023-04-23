@@ -37,10 +37,16 @@ EmployeeController.getOne = (req, res, next) =>{
     let employeeId =req.params.id
     EmployeeModel.getOne(engineDB,employeeId, (err, data)=>{
         if(err) error(res,`Error al obtener el empleado`,`Error al obtener el empleado con id ${employeeId}`,err)
-        let json = {'employee':data.dataValues}
-        
+        let json = {'employee':data.dataValues},
+            date = new Date(json.employee.birthday),
+            year = date.getFullYear(),
+            month = ('0' + date.getMonth()+1).slice(-2),
+            day = ('0' + date.getDay()).slice(-2)
+            
+        /* Formateo de datos  */
         json.employee.phoneNumber = json.employee.phoneNumber.replace(/\s/g, "")
-        json.employee.birthday = json.employee.birthday.toISOString()
+        json.employee.birthday = `${year}-${month}-${day}`
+        console.log(json);
         res.render('edit_employee',json)
     })
 
@@ -53,29 +59,38 @@ EmployeeController.getOne = (req, res, next) =>{
 */
 
 EmployeeController.save = async (req, res, next) =>{
-    console.log("ava");
     const form = new formidable.IncomingForm();
     form
     .parse(req, (err, fields, file) => {
-        if(err) error(res,'Error', 'Error al guardar empleado',err)
         let avatarFile = JSON.parse(JSON.stringify(file.avatar)),
-            cpPath = `${uploadPath}/${avatarFile.originalFilename}`,
-            fileDBPath = `/public/upload/${avatarFile.originalFilename}`,
             employee = fields;
-        
-        fse.copy(avatarFile.filepath, cpPath, err =>{ 
-            if(err) error(res,  'Upload Error', "Error al subir archivo", err)
-            else {
-                employee.avatar = fileDBPath
-                EmployeeModel.save(engineDB, employee, (err, data)=>{
-                    if(err) error(res,'Error', 'Error al guardar empleado',err)
-                    else {
-                        res.status(200);
-                        res.redirect("/");
-                    }
-                })
-            }
-        }) 
+        if(avatarFile.size > 0){
+            if(err) error(res,'Error', 'Error al guardar empleado',err)
+            let cpPath = `${uploadPath}/${avatarFile.originalFilename}`,
+                fileDBPath = `/uploads/${avatarFile.originalFilename}`;
+            fse.copy(avatarFile.filepath, cpPath, err =>{ 
+                if(err) error(res,  'Upload Error', "Error al subir archivo", err)
+                else {
+                    employee.avatar = fileDBPath
+                    EmployeeModel.save(engineDB, employee, (err, data)=>{
+                        if(err) error(res,'Error', 'Error al guardar empleado',err)
+                        else {
+                            res.status(200);
+                            res.redirect("/");
+                        }
+                    })
+                }
+            }) 
+        }
+        else {
+            EmployeeModel.save(engineDB, employee, (err, data)=>{
+                if(err) error(res,'Error', 'Error al guardar empleado',err)
+                else {
+                    res.status(200);
+                    res.redirect("/");
+                }
+            })
+        }
     })
 }
 
@@ -103,6 +118,5 @@ EmployeeController.error404 = (req,res,next) =>{
     res.render('error', locals)
     next()
 }
-
 
 module.exports = EmployeeController

@@ -13,7 +13,7 @@ block content
                     label.itemLabel Age
                     input.itemInput(type="number", name="age" value=`${employee.age}` required)
                     label.itemLabel Birthday
-                    input.intemInput(type="date" name="birthday" value=`${new Date(employee.birthday)}` required)
+                    input.intemInput(type="date" name="birthday" value=`${employee.birthday}` required)
                     label.intemLabel Phone Number
                     input.intemInput(type="Number",name="phoneNumber" value=`${employee.phoneNumber}` required)
                     label.intemLabel Email
@@ -33,5 +33,5 @@ block content
                     label.intemLabel Experience
                     input.intemInput(type="Number",name="experience" value=`${employee.experience}` required)
                     label.intemLabel Avatar
-                    input.itemImputFile(type="file", name="avatar" value=`${employee.avatar}` required)
+                    input.itemImputFile(type="file", name="avatar" value=`${employee.avatar}`)
                     input.button.edit(type="submit", name="Editar")

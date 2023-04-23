@@ -31,7 +31,6 @@ Employee.getOne = async (dialect, employeeId,cb) =>{
         data =  dialect === 'mysql' 
         ? await connMysql.findOne({ where: { _id: employeeId }})
         : await connMongo.findOne({ where: { _id: employeeId }});
-        console.log(data);
         cb(false,data)
         
     }
@@ -71,7 +70,7 @@ Employee.delete = async (dialect, id,cb) =>{
         const data =  dialect === 'mysql' 
         ? await connMysql.destroy({where: {_id: id}, individualHooks: true})
         : await connMongo.deleteOne({_id:id})
-        console.log(data);
+        
         if(data < 1)
             throw Error(`No existe el empleado con id: ${id}` )
         cb(false, data)
