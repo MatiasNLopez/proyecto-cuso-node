@@ -197,3 +197,32 @@ body{
     height: auto;
     margin: .2rem;
 }
+
+.containerAddEmployee{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    justify-items: center;
+}
+
+.formAddEmployee{
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr ;
+}
+
+.formAddEmployee > input{
+    width: 80%;
+    margin: 0.5rem;
+    padding: .2rem;
+}
+
+.formAddEmployee > label {
+    margin: .2rem;
+}
+
+.inputSubmit{
+    align-self: flex-end;
+    
+}

@@ -8,7 +8,7 @@ const db = require('./index')
 const EmployeesMysql = db.sequelize.define('employees',{
   _id: {
     type: DataTypes.INTEGER,
-    primaryKEy: true,
+    primaryKey: true,
     autoIncrement: true
   },
   name: {
@@ -55,10 +55,10 @@ const EmployeesMysql = db.sequelize.define('employees',{
     type: DataTypes.STRING,
     allowNull: false
   },
-  jobTitle: {
+  /* jobTitle: {
     type: DataTypes.STRING,
     allowNull: false
-  },
+  }, */
   jobType: {
     type: DataTypes.STRING,
     allowNull: false
@@ -67,10 +67,10 @@ const EmployeesMysql = db.sequelize.define('employees',{
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  decription:{
+  /* decription:{
     type: DataTypes.TEXT,
     allowNull: false
-  },
+  }, */
   avatar:{
     type: DataTypes.STRING,
     allowNull: false

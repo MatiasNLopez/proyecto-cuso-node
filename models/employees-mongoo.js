@@ -51,10 +51,10 @@ const mongoose = require('mongoose'),
             type: String,
             required: true
           },
-          jobTitle: {
+          /* jobTitle: {
             type: String,
             required: true
-          },
+          }, */
           jobType: {
             type: String,
             required: true
@@ -63,10 +63,10 @@ const mongoose = require('mongoose'),
             type: Number,
             required: true
           },
-          decription:{
+         /*  decription:{
             type: String,
             required: true
-          },
+          }, */
           avatar:{
             type: String,
             required: true

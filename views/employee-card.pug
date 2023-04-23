@@ -1,8 +1,8 @@
 section.cardEmployee 
     //boton eliminar
     article.cardInfoTop
-        form.form-delete(action=`/delete/${employee._id}`, method="post") 
-            input.button.detele(type="button", value="", onclick="delete(this)")
+        form.form-delete(action=`/delete/${employee._id}`, method="POST") 
+            input.button.detele(type="button", value="", onclick="eliminar(this)")
             input(type="hidden", name="_method", value="DELETE")
         aside.avatar 
             img(src=`${employee.avatar}`, alt="Imagen de perfil")
@@ -11,8 +11,8 @@ section.cardEmployee
         p#employeeJobType= `${employee.jobType}` 
     section.cardDescription
         article.cardAgeInfo
-            form.form-update(action=`/update/${employee.id}`, method="post") 
-                input.button.update(type="button", value="")
+            form.form-update(action=`/update/${employee._id}`, method="get") 
+                input.button.update(type="submit", value="")
             p.itemInfoTitle Age
             p.itemInfo= `${employee.age} years`
             p.itemInfoTitle Birthday
@@ -36,12 +36,11 @@ section.cardEmployee
         hr.line
         article.cardContactInfo
             p.itemInfoTitle PhoneNumber
-            p.itemInfo= `${employee.phoneNumber}`
+            p.itemInfo= `+${employee.phoneNumber}`
             p.itemInfoTitle Email
             p.itemInfo= `${employee.email}`
-
-        script.
-            function delete(input){
-                let deleteOk = confirm("¿Estas seguro que quiere eliminar la pelicula?")
-                return deleteOk? input.parentNode.submit() : false
-            }
+    script.
+        function eliminar(input){
+            let deleteOk = confirm("¿Estas seguro que quiere eliminar el empleado?")
+            return deleteOk? input.parentNode.submit() : false
+        }

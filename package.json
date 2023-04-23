@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "mongo-migrate": "node ./migrations/mongo/create-employees-and-seed-mogoose.js",
-    "mysql-migrate": "sequelize db:migrate:undo:all; sequelize db:migrate; sequelize db:seed:all"
+    "mysql-migrate": "sequelize db:migrate:undo:all; sequelize db:migrate; sequelize db:seed:all",
+    "all-migrate":"npm run mongo-migrate; npm run mysql-migrate"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-method-override": "^0.0.3",
+    "formidable": "^2.1.1",
+    "fs-extra": "^11.1.1",
     "mongoose": "^7.0.3",
     "morgan": "^1.10.0",
     "mysql2": "^3.2.0",

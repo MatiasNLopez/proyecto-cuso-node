@@ -13,17 +13,17 @@ for (let i = 0; i < process.env.CANT_EMPLOYEES; i++) {
         lastname,
         age: faker.mersenne.rand(18, 60) ,
         birthday: faker.date.birthdate({ min: 1900, max: 2000, mode: 'year' }), // 1940-08-20T08:53:07.538Z
-        phoneNumber:faker.phone.number('+48 91 ### ## ##'),
+        phoneNumber:faker.phone.number('48 91 ### ## ##'),
         email:faker.internet.email(name, lastname, 'gmail.com'),
         city:faker.address.cityName(),
         state:faker.address.state(),
         streetAddress: faker.address.streetAddress(true),
         jobArea: faker.name.jobArea(),
         jobDescriptor: faker.name.jobDescriptor(),
-        jobTitle: faker.name.jobTitle(),
+        /* jobTitle: faker.name.jobTitle(), */
         jobType:  faker.name.jobType(),
         experience:faker.mersenne.rand(1, 30), 
-        decription:faker.lorem.paragraph(1),
+        /* decription:faker.lorem.paragraph(1), */
         avatar:faker.internet.avatar(),
         createdAt: new Date(),
         updatedAt: new Date()

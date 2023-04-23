@@ -53,10 +53,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      jobTitle: {
+      /* jobTitle: {
         type: Sequelize.STRING,
         allowNull: false
-      },
+      }, */
       jobType: {
         type: Sequelize.STRING,
         allowNull: false
@@ -65,10 +65,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      decription:{
+      /* decription:{
         type: Sequelize.TEXT,
         allowNull: false
-      },
+      }, */
       avatar:{
         type: Sequelize.STRING,
         allowNull: false

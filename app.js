@@ -1,22 +1,21 @@
 'use strict'
 
 const express = require("express"),
+    path = require("path"),
     favicon = require("serve-favicon"),
     bodyParser = require("body-parser"),
     morgan = require("morgan"),
     expressOverrride = require("express-method-override")('_method'),
     routes = require("./routes/employee-routes"),
-    faviconURL = `${__dirname}/public/img/favicon.png`,
-    publicDir = express.static(`${__dirname}/public`),
-    viewDir = `${__dirname}/views`,
-    port = process.env.PORT || 3000, 
+    config = require('./config/config'),
+    publicDir = express.static(config.publicDir),
     app = express();
 
     app
-        .set('views', viewDir)
+        .set('views', config.viewDir)
         .set('view engine', 'pug')
-        .set('port', port)
-        .use(favicon(faviconURL))
+        .set('port', config.port)
+        .use(favicon(config.faviconURL))
         .use(bodyParser.json())
         .use(bodyParser.urlencoded({extended:false}))
         .use(expressOverrride)
