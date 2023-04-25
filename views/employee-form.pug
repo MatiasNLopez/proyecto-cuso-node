@@ -1,0 +1,39 @@
+extends layout.pug
+block content
+    -
+        var action = employee? `/update/employee/${employee._id}?_method=PUT` : "/"
+    article.containerFormEmployee
+        h1= title
+        section.sectionForm
+            form(action= action, enctype="multipart/form-data", method="post") 
+                fieldset.formAddEmployee
+                    input.itemInput(type="text", name="_id", value= employee? employee._id : "" , required, hidden)
+                    label.itemLabel Name 
+                    input.itemInput(type="text" name="name" value= employee? employee.name : "" required)
+                    label.itemLabel Lastname
+                    input.itemInput(type="text" name="lastname" value= employee? employee.lastname : "" required)
+                    label.itemLabel Age
+                    input.itemInput(type="number", name="age" value= employee? employee.age : "" required)
+                    label.itemLabel Birthday
+                    input.itemInput(type="date" name="birthday" value= employee? employee.birthday.toISOString().substring(0, 10) : "" required)
+                    label.intemLabel Phone Number
+                    input.itemInput(type="Number",name="phoneNumber" value= employee? employee.phoneNumber.replace(/\s/g, "") : "" required)
+                    label.intemLabel Email
+                    input.itemInput(type="email",name="email" value= employee? employee.email : "" required)
+                    label.intemLabel City
+                    input.itemInput(type="text",name="city" value= employee? employee.city : "" required)
+                    label.intemLabel State
+                    input.itemInput(type="text",name="state" value= employee? employee.state : "" required)
+                    label.intemLabel Street Address
+                    input.itemInput(type="text",name="streetAddress" value= employee? employee.streetAddress : "" required)
+                    label.intemLabel Job Area
+                    input.itemInput(type="text",name="jobArea" value= employee? employee.jobArea : "" required)
+                    label.intemLabel Job Descriptor
+                    input.itemInput(type="text",name="jobDescriptor" value= employee? employee.jobDescriptor : "" required)
+                    label.intemLabel Job Type
+                    input.itemInput(type="text",name="jobType" value= employee? employee.jobType : "" required)
+                    label.intemLabel Experience
+                    input.itemInput(type="Number",name="experience" value= employee? employee.experience : "" required)
+                    label.intemLabel Avatar
+                    input.itemInput(type="file", name="avatar" value= employee? employee.avatar : "")
+                    input.btn(type="submit", value= employee ? "Agregar" : "Editar")

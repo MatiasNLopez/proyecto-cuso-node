@@ -3,7 +3,7 @@ block content
     section.panelTop 
         p Empleados #{data.length} 
         form(action="/add/employee", method="get") 
-            input(type="submit", value="+ Agregar empleado")
+            input.btn(type="submit", value="+ Agregar empleado")
     section.listEmployee
         if data.length > 0
             each employee in data

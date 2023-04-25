@@ -12,6 +12,8 @@ const EmployeeModel = require('../models/employee-model'),
 
 const EmployeeController = () => {};
 
+EmployeeController.addForm = (req,res,next) =>{res.render('employee-form',{'title':'Agregar empleado'})}
+
 const error = (res,title, description, error) =>{
     console.log(error);
     res.status(500)
@@ -38,7 +40,7 @@ EmployeeController.getOne = (req, res, next) =>{
     EmployeeModel.getOne(engineDB,employeeId, (err, data)=>{
         if(err) error(res,`Error al obtener el empleado`,`Error al obtener el empleado con id ${employeeId}`,err)
         
-        res.render('edit_employee',{'employee':data})
+        res.render('employee-form',{'title':`Editar empleado ${data.name}` , 'employee':data})
     })
 
 }
@@ -95,9 +97,6 @@ EmployeeController.delete = (req, res, next) =>{
         res.redirect("/")
     })
 }
-
-EmployeeController.addForm = (req,res,next) =>{res.render('add_employee')}
-
 
 EmployeeController.error404 = (req,res,next) =>{
     let error = new Error(), 
