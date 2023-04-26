@@ -1,7 +1,7 @@
 extends layout.pug
 block content 
     section.panelTop 
-        p Empleados #{data.length} 
+        h3#cantEmpleados Empleados #{data.length} 
         form(action="/add/employee", method="get") 
             input.btn(type="submit", value="+ Agregar empleado")
     section.listEmployee

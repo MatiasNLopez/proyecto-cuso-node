@@ -16,24 +16,24 @@ block content
                     input.itemInput(type="number", name="age" value= employee? employee.age : "" required)
                     label.itemLabel Birthday
                     input.itemInput(type="date" name="birthday" value= employee? employee.birthday.toISOString().substring(0, 10) : "" required)
-                    label.intemLabel Phone Number
+                    label.itemLabel Phone Number
                     input.itemInput(type="Number",name="phoneNumber" value= employee? employee.phoneNumber.replace(/\s/g, "") : "" required)
-                    label.intemLabel Email
+                    label.itemLabel Email
                     input.itemInput(type="email",name="email" value= employee? employee.email : "" required)
-                    label.intemLabel City
+                    label.itemLabel City
                     input.itemInput(type="text",name="city" value= employee? employee.city : "" required)
-                    label.intemLabel State
+                    label.itemLabel State
                     input.itemInput(type="text",name="state" value= employee? employee.state : "" required)
-                    label.intemLabel Street Address
+                    label.itemLabel Street Address
                     input.itemInput(type="text",name="streetAddress" value= employee? employee.streetAddress : "" required)
-                    label.intemLabel Job Area
+                    label.itemLabel Job Area
                     input.itemInput(type="text",name="jobArea" value= employee? employee.jobArea : "" required)
-                    label.intemLabel Job Descriptor
+                    label.itemLabel Job Descriptor
                     input.itemInput(type="text",name="jobDescriptor" value= employee? employee.jobDescriptor : "" required)
-                    label.intemLabel Job Type
+                    label.itemLabel Job Type
                     input.itemInput(type="text",name="jobType" value= employee? employee.jobType : "" required)
-                    label.intemLabel Experience
+                    label.itemLabel Experience
                     input.itemInput(type="Number",name="experience" value= employee? employee.experience : "" required)
-                    label.intemLabel Avatar
+                    label.itemLabel Avatar
                     input.itemInput(type="file", name="avatar" value= employee? employee.avatar : "")
                     input.btn(type="submit", value= employee ? "Agregar" : "Editar")
