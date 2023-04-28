@@ -8,8 +8,8 @@ section.cardEmployee
         // boton editar
         p#employeeName= `${employee.name} ${employee.lastname}`
         p#employeeJobType= `${employee.jobType}` 
-    section.cardDescription
-        article.cardAgeInfo
+    section.sectionDescription
+        article.ageInfoSection
             form.form-update(action=`/update/employee/${employee._id}`, method="get") 
                 input.button.update(type="submit", value="")
             p.itemInfoTitle Age
@@ -17,7 +17,7 @@ section.cardEmployee
             p.itemInfoTitle Birthday
             p.itemInfo= `${employee.birthday.toLocaleDateString()}`
         hr.line
-        article.cardJobInfo
+        article.jobInfoSection
             p.itemInfoTitle JobArea
             p.itemInfo= `${employee.jobArea}`
             p.itemInfoTitle JobDescriptor
@@ -25,7 +25,7 @@ section.cardEmployee
             p.itemInfoTitle Experience
             p.itemInfo= `${employee.experience} years`
         hr.line
-        article.cardAddressInfo
+        article.addressInfoSection
             p.itemInfoTitle City
             p.itemInfo= `${employee.city}`
             p.itemInfoTitle State
@@ -33,7 +33,7 @@ section.cardEmployee
             p.itemInfoTitle StreetAddress
             p.itemInfo= `${employee.streetAddress}`
         hr.line
-        article.cardContactInfo
+        article.ContactInfoSection
             p.itemInfoTitle PhoneNumber
             p.itemInfo= `+${employee.phoneNumber}`
             p.itemInfoTitle Email
