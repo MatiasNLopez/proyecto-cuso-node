@@ -18,23 +18,23 @@ section.cardEmployee
             p.itemInfo= `${employee.birthday.toLocaleDateString()}`
         hr.line
         article.jobInfoSection
-            p.itemInfoTitle JobArea
+            p.itemInfoTitle Job Area
             p.itemInfo= `${employee.jobArea}`
-            p.itemInfoTitle JobDescriptor
+            p.itemInfoTitle Job Descriptor
             p.itemInfo= `${employee.jobDescriptor}`
             p.itemInfoTitle Experience
             p.itemInfo= `${employee.experience} years`
         hr.line
         article.addressInfoSection
-            p.itemInfoTitle City
-            p.itemInfo= `${employee.city}`
             p.itemInfoTitle State
             p.itemInfo= `${employee.state}`
-            p.itemInfoTitle StreetAddress
+            p.itemInfoTitle City
+            p.itemInfo= `${employee.city}`
+            p.itemInfoTitle Street Address
             p.itemInfo= `${employee.streetAddress}`
         hr.line
         article.ContactInfoSection
-            p.itemInfoTitle PhoneNumber
+            p.itemInfoTitle Phone Number
             p.itemInfo= `+${employee.phoneNumber}`
             p.itemInfoTitle Email
             p.itemInfo= `${employee.email}`

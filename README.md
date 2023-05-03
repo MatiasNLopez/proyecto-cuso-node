@@ -37,6 +37,7 @@ Para crear migraciones de bases de datos MySQL podemos utilizar [sequelize](http
 Para crear migraciones para mongoDB podemos utilizar mongoose o [migrate-mongoose](https://www.npmjs.com/package/migrate-mongoose).   
 
 [Crear Seeders Mongo DB](https://ronaldl337.wordpress.com/2020/06/20/crear-seeders-en-node-js-y-mongo-db/)
+
 ### Correr migraciones 
 
 -  `npm run mongo-migrate`: Corre las migraciones de mongo 
@@ -52,3 +53,14 @@ Para desplegar la app vamos a usar [railway](https://railway.app/)
 
 Tambien podemos usar [fly.io](https://fly.io/) 
 Investigar bien este servicio [documentacion de fly.io](https://fly.io/docs/)
+
+## configuracion Variables (Modo developer)
+``` Bash
+HOST = "url_host"
+PORT = '3000'
+DB_NAME = "user"
+PASSWORD = "password"
+DATABASE = "database_name"
+COLLECTION = "collection_name or table_name"
+DB_ENGINE = "mysql or mongo"
+CANT_EMPLOYEES = 50```

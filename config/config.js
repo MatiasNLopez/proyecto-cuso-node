@@ -1,7 +1,8 @@
 'use strict'
 
 require('dotenv').config()
-const path = require("path")
+const path = require("path"),
+    mysql2 = require('mysql2')
 
 module.exports = {
     publicDir : `${path.dirname(__dirname)}/public`,
@@ -16,6 +17,7 @@ module.exports = {
         password: process.env.PASSWORD,
         collection: process.env.COLLECTION,
         dialect: 'mysql',
+        dialectModule: mysql2,
         dbEngine: process.env.DB_ENGINE
     }
 }
