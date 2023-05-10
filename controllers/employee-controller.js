@@ -1,6 +1,5 @@
 'use strict'
 
-const EmployeesModel = require('../models/employees-mongoo');
 const employees = require('../models/fakerData/fakerEmployees');
 
 const EmployeeModel = require('../models/employee-model'),

@@ -1,6 +1,5 @@
 'use estrict'
 
-const { get, mongo } = require('mongoose');
 const employees = require('./fakerData/fakerEmployees');
 
 const config = require('../config/config').development,

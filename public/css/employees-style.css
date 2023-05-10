@@ -2,8 +2,7 @@ html {
     box-sizing: border-box; /* El tamaño de la caja empieza a contar desde el border y no del contenido  */
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
-    overflow: clip;
-    white-space: nowrap;
+    
 }
 
 
