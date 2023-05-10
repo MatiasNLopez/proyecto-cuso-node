@@ -11,10 +11,10 @@ module.exports = {
     port :  process.env.PORT || 3000, 
     
     development: {
-        username : process.env.DB_NAME,
+        username : process.env.DB_USER,
+        password: process.env.PASSWORD,
         host :process.env.HOST,
         database: process.env.DATABASE,
-        password: process.env.PASSWORD,
         collection: process.env.COLLECTION,
         dialect: 'mysql',
         dialectModule: mysql2,

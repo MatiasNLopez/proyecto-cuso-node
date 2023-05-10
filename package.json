@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "start": "server.js",
     "mongo-migrate": "node ./migrations/mongo/create-employees-and-seed-mogoose.js",
     "mysql-migrate": "sequelize db:migrate:undo:all; sequelize db:migrate; sequelize db:seed:all",
     "all-migrate": "npm run mongo-migrate; npm run mysql-migrate"
