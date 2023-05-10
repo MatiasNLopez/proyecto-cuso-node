@@ -15,6 +15,7 @@ const express = require("express"),
         .set('views', config.viewDir)
         .set('view engine', 'pug')
         .set('port', config.port)
+        .set('host',config.host)
         .use(favicon(config.faviconURL))
         .use(bodyParser.json())
         .use(bodyParser.urlencoded({extended:false}))
