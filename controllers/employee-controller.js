@@ -6,7 +6,6 @@ const employees = require('../models/fakerData/fakerEmployees');
 const EmployeeModel = require('../models/employee-model'),
     config = require('../config/config'),
     formidable = require('formidable'), /* Permite parsear los datos de un formulario */
-    engineDB = config.development.dbEngine,
     fse = require('fs-extra'),
     uploadPath =  `${__dirname}/../public/uploads`;
 
@@ -21,7 +20,7 @@ const error = (res,title, description, error) =>{
 }
 
 EmployeeController.getAll = (req,res, next) => {
-    EmployeeModel.getAll(engineDB, (err, data) => {
+    EmployeeModel.getAll( (err, data) => {
         
         if(err) error(res,'Error', 'Error al obtener empleados',err)
 
@@ -37,7 +36,7 @@ EmployeeController.getAll = (req,res, next) => {
 
 EmployeeController.getOne = (req, res, next) =>{
     let employeeId =req.params.id
-    EmployeeModel.getOne(engineDB,employeeId, (err, data)=>{
+    EmployeeModel.getOne(employeeId, (err, data)=>{
         if(err) error(res,`Error al obtener el empleado`,`Error al obtener el empleado con id ${employeeId}`,err)
         
         res.render('employee-form',{'title':`Editar empleado ${data.name}` , 'employee':data})
@@ -66,7 +65,7 @@ EmployeeController.save = async (req, res, next) =>{
                 if(err) error(res,  'Upload Error', "Error al subir archivo", err)
                 else {
                     employee.avatar = fileDBPath
-                    EmployeeModel.save(engineDB, employee, (err, data)=>{
+                    EmployeeModel.save( employee, (err, data)=>{
                         if(err) error(res,'Error', 'Error al guardar empleado',err)
                         else {
                             res.status(200);
@@ -77,7 +76,7 @@ EmployeeController.save = async (req, res, next) =>{
             }) 
         }
         else {
-            EmployeeModel.save(engineDB, employee, (err, data)=>{
+            EmployeeModel.save(employee, (err, data)=>{
                 if(err) error(res,'Error', 'Error al guardar empleado',err)
                 else {
                     res.status(200);
@@ -91,7 +90,7 @@ EmployeeController.save = async (req, res, next) =>{
 /* No redirige */
 EmployeeController.delete = (req, res, next) =>{
     
-    EmployeeModel.delete(engineDB, req.params.id, (err,data) => {
+    EmployeeModel.delete( req.params.id, (err,data) => {
         if(err) error(res,'Error', 'Error al eliminar empleado',err)
         res.status(200);
         res.redirect("/")

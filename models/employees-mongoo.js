@@ -2,8 +2,8 @@
 
 
 const mongoose = require('mongoose'),
-    config = require('../config/config').development,
-    DB_URL = `mongodb://${config.host}/${config.database}`,
+    config = require('../config/config'),
+    DB_URL = `mongodb://${config.host}/${config.development.database}`,
     Schema = mongoose.Schema,
     EmployeesSchemaa = new Schema({
         name: {

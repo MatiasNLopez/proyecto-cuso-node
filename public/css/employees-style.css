@@ -38,8 +38,8 @@ body{
     background-color: var(--color-body);
     justify-content: center;
     align-self: center;
-    word-break: break-all;
-    overflow-x: hidden;
+    /* word-break: break-all; */
+    
     
 }
 
@@ -49,11 +49,6 @@ h1{
 
 h2{
     font-size: 1.2rem;
-}
-
-code{
-    width: 80%;
-    background-color: var(--color-card);
 }
 
 .header{
@@ -121,7 +116,9 @@ code{
     margin: .1rem;
     justify-content: center;
     align-content: center;
-    
+   /*  inline-size: 150px;
+    overflow-wrap: break-word;
+    hyphens: manual; */
     
 }
 
@@ -143,12 +140,12 @@ code{
     
 }
 
-    .cardInfoTop{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    width: 100%;
+.cardInfoTop{
+display: flex;
+flex-direction: column;
+align-items: center;
+align-content: center;
+width: 100%;
 }
 
 .cardInfoTop p{
@@ -359,6 +356,16 @@ code{
     background-image: url("/img/edit-btn-action.svg");
 }
 
+
+
+.error{
+    min-width: 10px;
+    max-width: 10px;
+    inline-size: 150px;
+    overflow-wrap: break-word;
+    hyphens: manual;
+    
+}
 
 /* Desktop*/
 @media screen and (min-width: 1024px) {
