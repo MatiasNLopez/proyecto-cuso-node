@@ -37,8 +37,6 @@ body{
     background-color: var(--color-body);
     justify-content: center;
     align-self: center;
-    /* word-break: break-all; */
-    
     
 }
 
@@ -115,10 +113,7 @@ h2{
     margin: .1rem;
     justify-content: center;
     align-content: center;
-   /*  inline-size: 150px;
-    overflow-wrap: break-word;
-    hyphens: manual; */
-    
+
 }
 
 .cardEmployee{
@@ -356,14 +351,14 @@ width: 100%;
 }
 
 
-
 .error{
-    min-width: 10px;
-    max-width: 10px;
-    inline-size: 150px;
+    margin: auto;
+    min-width: 50%;
     overflow-wrap: break-word;
-    hyphens: manual;
-    
+    margin: 1rem;
+    padding: 1rem;
+    background-color: var(--color-card);
+    border: solid thin var(--color-border);
 }
 
 /* Desktop*/
