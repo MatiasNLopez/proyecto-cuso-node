@@ -3,7 +3,7 @@
 const mongoose = require('mongoose'),
     config = require('../config/config'),
     dbConn = config.env === 'dev'? config.development : config.production,
-    DB_URL = `mongodb://${dbConn.dbHost}/${dbConn.database}`,
+    DB_URL = `mongodb://${dbConn.host}/${dbConn.database}`,
     Schema = mongoose.Schema,
     
     EmployeesSchemaa = new Schema({

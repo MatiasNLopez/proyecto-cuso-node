@@ -8,11 +8,7 @@ const config = require('../config/config');
 const dbConn = config.env === 'dev' ? config.development : config.production;
 const db = {};
 
-const sequelize = new Sequelize(dbConn.database, dbConn.dbUser , dbConn.dbPassword, {
-    host: dbConn.dbHost,
-    port:dbConn.dbPort,
-    dialect:'mysql'
-});
+const sequelize = new Sequelize(dbConn.database, dbConn.username , dbConn.password, dbConn);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
