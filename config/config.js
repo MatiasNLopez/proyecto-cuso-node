@@ -17,24 +17,25 @@ module.exports = {
     env: process.env.ENV,
     
     development: {
+        username : process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
         database: process.env.DB_DATABASE,
-        dbUser : process.env.DB_USER,
-        dbPassword: process.env.DB_PASSWORD,
         dbCollection: process.env.DB_COLLECTION,
-        dbHost: process.env.DB_HOST,
-        dbPort: process.env.DB_PORT,
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
         dialect: 'mysql',
         dialectModule: mysql2,
         dbEngine: process.env.DB_ENGINE
     },
     
     production: {
+        username : process.env.DB_USER_PRODUCTION,
+        password: process.env.DB_PASSWORD_PRODUCTION,
         database: process.env.DB_DATABASE_PRODUCTION,
-        dbUser : process.env.DB_USER_PRODUCTION,
-        dbPassword: process.env.DB_PASSWORD_PRODUCTION,
         dbCollection: process.env.DB_COLLECTION_PRODUCTION,
-        dbHost: process.env.DB_HOST_PRODUCTION,
-        dbPort: process.env.DB_PORT_PRODUCTION,
+        host: process.env.DB_HOST_PRODUCTION,
+        port: process.env.DB_PORT_PRODUCTION,
+        dialect: 'mysql',
         dialectModule: mysql2,
         dbEngine: process.env.DB_ENGINE_PRODUCTION
     }
