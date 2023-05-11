@@ -3,8 +3,8 @@
 require('dotenv').config()
 const path = require("path"),
     mysql2 = require('mysql2'),
-    port_app =  process.env.PORT_APP || 3000, 
-    host_app = process.env.HOST_APP,
+    port_app =  process.env.PORT || 3000, 
+    host_app = process.env.HOST,
     url_host_app = process.env.URL_HOST_APP || `http://${host_app}:${port_app}`;
     
 module.exports = {
