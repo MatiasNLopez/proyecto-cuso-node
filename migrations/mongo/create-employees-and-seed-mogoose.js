@@ -4,12 +4,10 @@ const employees = require('../../models/fakerData/fakerEmployees');
 
 const mongoose = require('mongoose'),
     config = require('../../config/config'),
-    dbConn = config.env === 'dev' ? config.development: config.production,
     fakerEmployees = require('../../models/fakerData/fakerEmployees'),
     Employees = require('../../models/employees-mongoo'),
-    DB_URL = `mongodb://${dbConn.host}/${dbConn.database}`,
+    DB_URL = `mongodb://${config.dbConnection.host}/${config.dbConnection.database}`,
     conn = mongoose.createConnection(DB_URL);
-
 
 conn
 .dropDatabase()

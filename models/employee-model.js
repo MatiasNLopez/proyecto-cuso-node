@@ -3,17 +3,16 @@
 const employees = require('./fakerData/fakerEmployees');
 
 const config = require('../config/config'),
-    dbConn = config.env === 'dev'? config.development : config.production,
-    connMysql = dbConn.dbEngine === 'mysql'? require('./employees-mysql') : null,
-    connMongo = dbConn.dbEngine === 'mongo' ? require('./employees-mongoo'): null;
+    connMysql = config.dbConnection.dbEngine === 'mysql'? require('./employees-mysql') : null,
+    connMongo = config.dbConnection.dbEngine === 'mongo' ? require('./employees-mongoo') : null;
     
 Employee = () => {}
 
 /* Mysql or mongo */
 
 Employee.getAll = async (cb) =>{
-    
     try{
+        if (!connMongo && !connMysql) throw 'No coneccition Database'
         const data =  connMysql
         ? await connMysql.findAll()
         : await connMongo.find();
@@ -26,8 +25,10 @@ Employee.getAll = async (cb) =>{
     
 }
 Employee.getOne = async (employeeId,cb) =>{
+    
     let data = {}
     try{
+        if (!connMongo && !connMysql) throw 'No coneccition Database'
         data =  connMysql 
         ? await connMysql.findOne({ where: { _id: employeeId }})
         : await connMongo.findOne({_id: employeeId} );
@@ -43,7 +44,10 @@ Employee.getOne = async (employeeId,cb) =>{
 }
 
 Employee.save = async (data, cb) =>{
+    
     try {
+        if (!connMongo && !connMysql) throw 'No coneccition Database'
+
         if(data._id){
             let _id = data._id
             delete data._id
@@ -68,8 +72,9 @@ Employee.save = async (data, cb) =>{
 }
 
 Employee.delete = async (id,cb) =>{
-    
     try{
+        if (!connMongo && !connMysql) throw 'No coneccition Database'
+
         const data =  connMysql
         ? await connMysql.destroy({where: {_id: id}, individualHooks: true})
         : await connMongo.deleteOne({_id:id})

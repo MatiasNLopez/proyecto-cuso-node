@@ -2,8 +2,7 @@
 
 const mongoose = require('mongoose'),
     config = require('../config/config'),
-    dbConn = config.env === 'dev'? config.development : config.production,
-    DB_URL = `mongodb://${dbConn.host}/${dbConn.database}`,
+    DB_URL = `mongodb://${config.dbConnection.host}/${config.dbConnection.database}`,
     Schema = mongoose.Schema,
     
     EmployeesSchemaa = new Schema({
@@ -85,10 +84,10 @@ const mongoose = require('mongoose'),
           timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }
         },
         {
-            collection: dbConn.dbCollection
+            collection: config.dbConnection.dbCollection
         }
         ),
-    EmployeesModel = mongoose.model(dbConn.dbCollection,EmployeesSchemaa)
+    EmployeesModel = mongoose.model(config.dbConnection.dbCollection, EmployeesSchemaa)
     mongoose.connect(DB_URL, {useNewUrlParser: true});
     mongoose.set('toJSON', {
       virtuals: true,

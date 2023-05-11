@@ -1,15 +1,14 @@
 'use strict';
 
 const fakerEmployees = require('../models/fakerData/fakerEmployees'),
-  config = require('../config/config'),
-  dbConn = config.env === 'dev' ? config.development : config.production;
+  config = require('../config/config');
   
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert(dbConn.dbCollection, fakerEmployees, {});
+    return queryInterface.bulkInsert(config.dbConnection.dbCollection, fakerEmployees, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete(dbConn.dbCollection, null, {});
+    return queryInterface.bulkDelete(config.dbConnection.dbCollection, null, {});
   }
 };

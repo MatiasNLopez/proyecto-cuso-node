@@ -53,6 +53,7 @@ EmployeeController.save = async (req, res, next) =>{
     const form = new formidable.IncomingForm();
     form
     .parse(req, (err, fields, file) => {
+        
         let avatarFile = JSON.parse(JSON.stringify(file.avatar)),
             employee = fields;
             

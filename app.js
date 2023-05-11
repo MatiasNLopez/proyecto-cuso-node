@@ -8,15 +8,15 @@ const express = require("express"),
     expressOverrride = require("express-method-override")('_method'),
     routes = require("./routes/employee-routes"),
     config = require('./config/config'),
-    publicDir = express.static(config.publicDir),
+    publicDir = express.static(config.app.publicDir),
     app = express();
     
     app
-        .set('views', config.viewDir)
+        .set('views', config.app.viewDir)
         .set('view engine', 'pug')
-        .set('port', config.port_app)
-        .set('url_host', config.url_host_app)
-        .use(favicon(config.faviconURL))
+        .set('port', config.app.port)
+        .set('url_host', config.app.url_host)
+        .use(favicon(config.app.faviconURL))
         .use(bodyParser.json())
         .use(bodyParser.urlencoded({extended:false}))
         .use(expressOverrride)
