@@ -4,10 +4,15 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-const config = require('../config/config').development;
+const config = require('../config/config');
+const dbConn = config.env === 'dev' ? config.development : config.production;
 const db = {};
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize(dbConn.database, dbConn.dbUser , dbConn.dbPassword, {
+    host: dbConn.dbHost,
+    port:dbConn.dbPort,
+    dialect:'mysql'
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

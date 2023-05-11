@@ -3,12 +3,13 @@
 const employees = require('../../models/fakerData/fakerEmployees');
 
 const mongoose = require('mongoose'),
-    config = require('../../config/config').development,
+    config = require('../../config/config'),
+    dbConn = config.env === 'dev' ? config.development: config.production,
     fakerEmployees = require('../../models/fakerData/fakerEmployees'),
     Employees = require('../../models/employees-mongoo'),
-    DB_URL = `mongodb://${config.host}/${config.database}`,
+    DB_URL = `mongodb://${dbConn.dbHost}/${dbConn.database}`,
     conn = mongoose.createConnection(DB_URL);
-    
+    console.log(dbConn);
 //Esto no anda y antes andaba 
 conn
 .dropDatabase()

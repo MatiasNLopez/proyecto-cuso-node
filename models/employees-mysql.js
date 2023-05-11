@@ -4,8 +4,10 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 const db = require('./index')
+const config = require('../config/config')
+const dbConn = config.env === 'dev' ? config.development: config.production;
 
-const EmployeesMysql = db.sequelize.define('employees',{
+const EmployeesMysql = db.sequelize.define(dbConn.dbCollection,{
   _id: {
     type: DataTypes.INTEGER,
     primaryKey: true,

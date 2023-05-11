@@ -1,8 +1,10 @@
 'use strict';
-const config = require('../config/config').development
+const config = require('../config/config'),
+  dbConn = config.env === 'dev' ? config.development : config.production;
+  
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable(config.collection, {
+    await queryInterface.createTable(dbConn.dbCollection, {
       _id: {
         allowNull: false,
         autoIncrement: true,
@@ -84,6 +86,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable(config.collection);
+    await queryInterface.dropTable(dbConn.dbCollection);
   }
 };

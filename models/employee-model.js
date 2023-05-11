@@ -2,9 +2,10 @@
 
 const employees = require('./fakerData/fakerEmployees');
 
-const config = require('../config/config').development,
-    connMysql = config.dbEngine === 'mysql'? require('./employees-mysql') : null,
-    connMongo = config.dbEngine === 'mongo' ? require('./employees-mongoo'): null;
+const config = require('../config/config'),
+    dbConn = config.env === 'dev'? config.development : config.production,
+    connMysql = dbConn.dbEngine === 'mysql'? require('./employees-mysql') : null,
+    connMongo = dbConn.dbEngine === 'mongo' ? require('./employees-mongoo'): null;
     
 Employee = () => {}
 
