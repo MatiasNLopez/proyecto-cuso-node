@@ -19,6 +19,7 @@ module.exports = {
         password: process.env.PASSWORD,
         database: process.env.DATABASE,
         collection: process.env.COLLECTION,
+        host,
         dialect: 'mysql',
         dialectModule: mysql2,
         dbEngine: process.env.DB_ENGINE
