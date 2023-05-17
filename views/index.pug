@@ -1,10 +1,10 @@
 extends layout.pug
 block content 
-    section.panelTop 
-        h3#cantEmpleados Empleados #{data.length} 
+    section.panel-top 
+        h3.quantity-employees.text--balck.font-h2 Empleados #{data.length} 
         form(action="/add/employee", method="get") 
-            input.btn(type="submit", value="+ Agregar empleado")
-    section.listEmployee
+            input.btn.btn-rectangle.font-h3.font--bold--italic(type="submit", value="+ Agregar empleado")
+    section.list-employee
         if data.length > 0
             each employee in data
                 include employee-card.pug

@@ -1,8 +1,9 @@
 extends layout.pug 
 block content
-    h1= title
-    h2= description
+    section.error-title
+        h1.error-title__h1.font-h1= title
+        h2.error-title__h2.font-h1-between-h2= description
     br
     section.error
-        code.error-msg #{error}
+        code.error-msg.text-wrap.font-h3 #{error}
         

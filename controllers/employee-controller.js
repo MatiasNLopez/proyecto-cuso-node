@@ -38,7 +38,7 @@ EmployeeController.getOne = (req, res, next) =>{
     EmployeeModel.getOne(employeeId, (err, data)=>{
         if(err) error(res,`Error al obtener el empleado`,`Error al obtener el empleado con id ${employeeId}`,err)
         
-        res.render('employee-form',{'title':`Editar empleado ${data.name}` , 'employee':data})
+        res.render('employee-form',{'title':`Editar empleado` , 'employee':data})
     })
 
 }

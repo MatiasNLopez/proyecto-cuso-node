@@ -1,43 +1,64 @@
-section.cardEmployee 
-    //boton eliminar
-    article.cardInfoTop
-        form.form-delete(action=`/delete/employee/${employee._id}?_method=DELETE`, method="POST") 
-            input.button.detele(type="button", value="", onclick="eliminar(this)")
-        aside.avatar 
-            img(src=`${employee.avatar}`, alt="Imagen de perfil")
-        // boton editar
-        p#employeeName= `${employee.name} ${employee.lastname}`
-        p#employeeJobType= `${employee.jobType}` 
-    section.sectionDescription
-        article.ageInfoSection
-            form.form-update(action=`/update/employee/${employee._id}`, method="get") 
-                input.button.update(type="submit", value="")
-            p.itemInfoTitle Age
-            p.itemInfo= `${employee.age} years`
-            p.itemInfoTitle Birthday
-            p.itemInfo= `${employee.birthday.toLocaleDateString()}`
-        hr.line
-        article.jobInfoSection
-            p.itemInfoTitle Job Area
-            p.itemInfo= `${employee.jobArea}`
-            p.itemInfoTitle Job Descriptor
-            p.itemInfo= `${employee.jobDescriptor}`
-            p.itemInfoTitle Experience
-            p.itemInfo= `${employee.experience} years`
-        hr.line
-        article.addressInfoSection
-            p.itemInfoTitle State
-            p.itemInfo= `${employee.state}`
-            p.itemInfoTitle City
-            p.itemInfo= `${employee.city}`
-            p.itemInfoTitle Address
-            p.itemInfo= `${employee.streetAddress}`
-        hr.line
-        article.ContactInfoSection
-            p.itemInfoTitle Phone 
-            p.itemInfo= `+${employee.phoneNumber}`
-            p.itemInfoTitle Email
-            p.itemInfo= `${employee.email}`
+article.card-employee 
+    
+    header.card-employee-header
+        
+        form.card-employee-header-form(action=`/delete/employee/${employee._id}?_method=DELETE`, method="POST") 
+            input.btn--img.btn-delete--img(type="button", value="", onclick="eliminar(this)")
+        
+        aside.card-employee-header-avatar 
+            img.card-employee-header-avatar__img(src=`${employee.avatar}`, alt="Imagen de perfil")
+        
+        div.card-employee-header-info
+            h2.font--bold.font-h2.employee-name= `${employee.name} ${employee.lastname}`
+            h3.font--regular--italic.font-h3.employee-job-type.font-color= `${employee.jobType}` 
+    
+    hr.card-employee-body__line
+
+    section.card-employee-body
+        section.card-employee-body-age
+            form.card-employee-body-age-form(action=`/update/employee/${employee._id}`, method="get") 
+                input.btn--img.btn-update--img(type="submit", value="")
+            
+            p.card-employee__text.font--medium.font-h3.text-wrap.text-wrap Age
+            p.card-employee__text.font--regular.font-text.text-wrap= `${employee.age} years`
+
+            p.card-employee__text.font--medium.font-h3.text-wrap Birthday
+            p.card-employee__text.font--regular.font-text.text-wrap.text-wrap= `${employee.birthday.toLocaleDateString()}`
+        
+            
+        
+        section.card-employee-body-job
+            p.card-employee__text.font--medium.font-h3.text-wrap Job Area
+            p.card-employee__text.font--regular.font-text.text-wrap= `${employee.jobArea}`
+
+            p.card-employee__text.font--medium.font-h3.text-wrap Job Descriptor
+            p.card-employee__text.font--regular.font-text.text-wrap= `${employee.jobDescriptor}`
+
+            p.card-employee__text.font--medium.font-h3.text-wrap Experience
+            p.card-employee__text.font--regular.font-text.text-wrap= `${employee.experience} years`
+        
+            
+        
+        section.card-employee-body-address
+            p.card-employee__text.font--medium.font-h3.text-wrap State
+            p.card-employee__text.font--regular.font-text.text-wrap= `${employee.state}`
+
+            p.card-employee__text.font--medium.font-h3.text-wrap City
+            p.card-employee__text.font--regular.font-text.text-wrap= `${employee.city}`
+
+            p.card-employee__text.font--medium.font-h3.text-wrap Address
+            p.card-employee__text.font--regular.font-text.text-wrap= `${employee.streetAddress}`
+        
+            
+        
+        section.card-employee-body-contact
+            
+            p.card-employee__text.font--medium.font-h3.text-wrap Phone 
+            p.card-employee__text.font--regular.font-text.text-wrap= `+${employee.phoneNumber}`
+
+            p.card-employee__text.font--medium.font-h3.text-wrap Email
+            p.card-employee__text.font--regular.font-text.text-wrap= `${employee.email}`
+        
     script.
         function eliminar(input){
             let deleteOk = confirm("¿Estas seguro que quiere eliminar el empleado?")

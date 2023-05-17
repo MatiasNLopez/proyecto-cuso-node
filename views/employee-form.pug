@@ -2,41 +2,41 @@ extends layout.pug
 block content
     -
         var action = employee? `/update/employee/${employee._id}?_method=PUT` : "/"
-    article.containerFormEmployee
-        h1= title
-        section.sectionForm
-            form(action= action, enctype="multipart/form-data", method="post") 
-                fieldset.formAddEmployee
-                    label.itemLabel Name 
-                    input.itemInput(type="text" name="name" value= employee? employee.name : "" required)
-                    label.itemLabel Lastname
-                    input.itemInput(type="text" name="lastname" value= employee? employee.lastname : "" required)
-                    label.itemLabel Age
-                    input.itemInput(type="number", name="age" value= employee? employee.age : "" required)
-                    label.itemLabel Birthday
-                    input.itemInput(type="date" name="birthday" value= employee? employee.birthday.toISOString().substring(0, 10) : "" required)
-                    label.itemLabel Phone Number
-                    input.itemInput(type="Number",name="phoneNumber" value= employee? employee.phoneNumber.replace(/\s/g, "") : "" required)
-                    label.itemLabel Email
-                    input.itemInput(type="email",name="email" value= employee? employee.email : "" required)
-                    label.itemLabel City
-                    input.itemInput(type="text",name="city" value= employee? employee.city : "" required)
-                    label.itemLabel State
-                    input.itemInput(type="text",name="state" value= employee? employee.state : "" required)
-                    label.itemLabel Street Address
-                    input.itemInput(type="text",name="streetAddress" value= employee? employee.streetAddress : "" required)
-                    label.itemLabel Job Area
-                    input.itemInput(type="text",name="jobArea" value= employee? employee.jobArea : "" required)
-                    label.itemLabel Job Descriptor
-                    input.itemInput(type="text",name="jobDescriptor" value= employee? employee.jobDescriptor : "" required)
-                    label.itemLabel Job Type
-                    input.itemInput(type="text",name="jobType" value= employee? employee.jobType : "" required)
-                    label.itemLabel Experience
-                    input.itemInput(type="Number",name="experience" value= employee? employee.experience : "" required)
-                    label.itemLabel Avatar
-                    input.itemInput(type="file", name="avatar" value= employee? employee.avatar : "")
-                    
-                    - if(employee)
-                        input.itemInput(type="text", name="_id", value= employee? employee._id : "" , hidden)
+    section.add-container-employee
+        h1.font--black.font-h1.text-wrap.form-h1= title
+        - if(employee)
+            h2.font--black.font-h1-between-h2.text-wrap.form-h2= employee.name
+        form.form-employee(action= action, enctype="multipart/form-data", method="post") 
+            label.font--bold.font-h3.text-wrap Name 
+            input.input.font--ligth.font-text.text-wrap(type="text" name="name" value= employee? employee.name : "" required)
+            label.font--bold.font-h3.text-wrap Lastname
+            input.input.font--ligth.font-text.text-wrap(type="text" name="lastname" value= employee? employee.lastname : "" required)
+            label.font--bold.font-h3.text-wrap Age
+            input.input.font--ligth.font-text.text-wrap(type="number", name="age" value= employee? employee.age : "" required)
+            label.font--bold.font-h3.text-wrap Birthday
+            input.input.font--ligth.font-text.text-wrap(type="date" name="birthday" value= employee? employee.birthday.toISOString().substring(0, 10) : "" required)
+            label.font--bold.font-h3.text-wrap Phone Number
+            input.input.font--ligth.font-text.text-wrap(type="Number",name="phoneNumber" value= employee? employee.phoneNumber.replace(/\s/g, "") : "" required)
+            label.font--bold.font-h3.text-wrap Email
+            input.input.font--ligth.font-text.text-wrap(type="email",name="email" value= employee? employee.email : "" required)
+            label.font--bold.font-h3.text-wrap City
+            input.input.font--ligth.font-text.text-wrap(type="text",name="city" value= employee? employee.city : "" required)
+            label.font--bold.font-h3.text-wrap State
+            input.input.font--ligth.font-text.text-wrap(type="text",name="state" value= employee? employee.state : "" required)
+            label.font--bold.font-h3.text-wrap Street Address
+            input.input.font--ligth.font-text.text-wrap(type="text",name="streetAddress" value= employee? employee.streetAddress : "" required)
+            label.font--bold.font-h3.text-wrap Job Area
+            input.input.font--ligth.font-text.text-wrap(type="text",name="jobArea" value= employee? employee.jobArea : "" required)
+            label.font--bold.font-h3.text-wrap Job Descriptor
+            input.input.font--ligth.font-text.text-wrap(type="text",name="jobDescriptor" value= employee? employee.jobDescriptor : "" required)
+            label.font--bold.font-h3.text-wrap Job Type
+            input.input.font--ligth.font-text.text-wrap(type="text",name="jobType" value= employee? employee.jobType : "" required)
+            label.font--bold.font-h3.text-wrap Experience
+            input.input.font--ligth.font-text.text-wrap(type="Number",name="experience" value= employee? employee.experience : "" required)
+            label.font--bold.font-h3.text-wrap Avatar
+            input.input.font--ligth.font-text.text-wrap(type="file", name="avatar" value= employee? employee.avatar : "")
+            
+            - if(employee)
+                input.input.font--ligth.font-text.text-wrap(type="text", name="_id", value= employee? employee._id : "" , hidden)
 
-                    input.btn(type="submit", value= employee ? "Editar" : "Agregar")
+            input.imput-submit.btn.btn-rectangle.font-h3.font--regular--italic(type="submit", value= employee ? "Editar" : "Agregar")
