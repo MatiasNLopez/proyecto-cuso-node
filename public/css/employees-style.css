@@ -424,7 +424,13 @@ body{
 @media screen and (min-width:500px) {
     .card-employee{
         width: 45%;
-        height: 340px;
+        height: 380px;
+    }
+
+    .card-employee-body{
+        align-self: center;
+        margin: auto;
+        height: 75%;
     }
 
     .font-h1{
