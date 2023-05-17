@@ -424,7 +424,7 @@ body{
 @media screen and (min-width:500px) {
     .card-employee{
         width: 45%;
-        
+        height: 340px;
     }
 
     .font-h1{
