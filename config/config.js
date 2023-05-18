@@ -2,7 +2,6 @@
 
 require('dotenv').config()
 const path = require("path"),
-    mysql2 = require('mysql2'),
     config = { 
         enviroment : process.env.ENV,
         eviromentMode:{
@@ -25,30 +24,56 @@ const path = require("path"),
             password: process.env.DB_PASSWORD,
             database: process.env.DB_DATABASE,
             dbCollection: process.env.DB_COLLECTION,
-            host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
+            host: process.env.DB_HOST || '',
+            port: process.env.DB_PORT || '',
             dialect: 'mysql',
-            dialectModule: mysql2,
-            dbEngine: process.env.DB_ENGINE
+            options: process.env.DB_OPTIONS,
+            dbEngine: process.env.DB_ENGINE,
+            dialectOptions: {
+                ssl: {
+                    rejectUnauthorized: false,
+                }
+            } 
         },
-        
+        test: {
+            username : process.env.DB_USER_TEST,
+            password: process.env.DB_PASSWORD_TEST,
+            database: process.env.DB_DATABASE_TEST,
+            dbCollection: process.env.DB_COLLECTION_TEST,
+            host: process.env.DB_HOST_TEST || '',
+            port: process.env.DB_PORT_TEST || '',
+            dialect: 'mysql',
+            options: process.env.DB_OPTIONS_TEST,
+            dbEngine: process.env.DB_ENGINE_TEST,
+            dialectOptions: {
+                ssl: {
+                    rejectUnauthorized: false,
+                }
+            } 
+        },
         production: {
             username : process.env.DB_USER_PRODUCTION,
             password: process.env.DB_PASSWORD_PRODUCTION,
             database: process.env.DB_DATABASE_PRODUCTION,
             dbCollection: process.env.DB_COLLECTION_PRODUCTION,
-            host: process.env.DB_HOST_PRODUCTION,
-            port: process.env.DB_PORT_PRODUCTION,
+            host: process.env.DB_HOST_PRODUCTION || '',
+            port: process.env.DB_PORT_PRODUCTION || '',
             dialect: 'mysql',
-            dialectModule: mysql2,
-            dbEngine: process.env.DB_ENGINE_PRODUCTION
+            options: process.env.DB_OPTIONS_PRODUCTION || '',
+            dbEngine: process.env.DB_ENGINE_PRODUCTION,
+            dialectOptions: {
+                ssl: {
+                    rejectUnauthorized: false,
+                }
+            } 
         },
         dbConnection:{}
     };
     
-    config.dbConnection = 
-        config.enviroment ===  config.eviromentMode.develop 
-        ? config.development 
-        : config.production
+    if(config.enviroment ===  config.eviromentMode.production)
+        config.dbConnection = config.production
+    else if(config.enviroment ===  config.eviromentMode.test)        
+        config.dbConnection = config.test
+    else config.dbConnection = config.development
 
 module.exports = config
