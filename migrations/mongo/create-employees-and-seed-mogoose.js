@@ -1,13 +1,11 @@
 'use strict'
 
 const employees = require('../../models/fakerData/fakerEmployees');
-
 const mongoose = require('mongoose'),
-    config = require('../../config/config'),
-    fakerEmployees = require('../../models/fakerData/fakerEmployees'),
-    Employees = require('../../models/employees-mongoo'),
-    DB_URL = `mongodb://${config.dbConnection.host}/${config.dbConnection.database}`,
-    conn = mongoose.createConnection(DB_URL);
+  config = require('../../config/config'),
+  fakerEmployees = require('../../models/fakerData/fakerEmployees'),
+  Employees = require('../../models/employees-mongoo'),
+  conn = mongoose.createConnection(config.dbConnection.host);
 
 conn
 .dropDatabase()

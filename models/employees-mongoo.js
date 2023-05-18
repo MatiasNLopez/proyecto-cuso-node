@@ -2,7 +2,6 @@
 
 const mongoose = require('mongoose'),
     config = require('../config/config'),
-    DB_URL = `mongodb://${config.dbConnection.host}/${config.dbConnection.database}`,
     Schema = mongoose.Schema,
     
     EmployeesSchemaa = new Schema({
@@ -88,7 +87,7 @@ const mongoose = require('mongoose'),
         }
         ),
     EmployeesModel = mongoose.model(config.dbConnection.dbCollection, EmployeesSchemaa)
-    mongoose.connect(DB_URL, {useNewUrlParser: true});
+    mongoose.connect(config.dbConnection.host, {useNewUrlParser: true});
     mongoose.set('toJSON', {
       virtuals: true,
       transform: (doc, converted) => {
