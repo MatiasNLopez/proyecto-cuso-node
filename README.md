@@ -27,9 +27,6 @@ Los datos que contendra seran:
 * Años de experiencia
 * Descripcion 
 
-La idea de es algo asi 
-![prototipo-proyecto](./Proyecto-Desktop.png)
-
 ## Migraciones 
 En este proyecto tambien se practicara Migraciones tanto para MySQL como para MongooDB con datos creados con aletoriamente con fakerjs
 Para crear migraciones de bases de datos MySQL podemos utilizar [sequelize](https://sequelize.org/) que es una de las herramientas más populares.
