@@ -1,4 +1,4 @@
-# proyecto-cuso-node
+# proyecto-curso-node
 
 El proyecto sera una API Rest de una lista de contactos o empleados de una empresa que mostrara una carta con sus datos. 
 En este proyecto se hara uso de los conocimientos del curso de Nodejs, de flexbox y CSS Grid.
